@@ -107,5 +107,74 @@ bsub < input_run_af3_singularity.lsf
 - Store output results in scratch to avoid filling up project space.  
 
 ---
+# Uploading & Downloading Files to/from Minerva (via SFTP)
+
+You can transfer files between your local machine and Minerva using **SFTP** (SSH File Transfer Protocol).
+
+---
+
+## Uploading (Local → Minerva)
+
+1. Open a terminal on your local computer.  
+2. Navigate to the folder where your file is located:
+
+   ```bash
+   cd /path/to/my/local/files
+
+    Connect to Minerva via SFTP:
+
+sftp username@minerva.hpc.mssm.edu
+
+    Replace username with your Minerva account.
+
+    Enter your password (MSSM credentials + VIP Access code if required).
+
+Navigate to your target folder on Minerva:
+
+cd /sc/arion/scratch/your_folder/
+
+Upload a file:
+
+put myfile.json
+
+    Upload directories with:
+
+put -r mydir
+
+Exit:
+
+    exit
+
+Downloading (Minerva → Local)
+
+    Connect via SFTP:
+
+sftp username@minerva.hpc.mssm.edu
+
+Navigate to the remote folder:
+
+cd /sc/arion/scratch/your_folder/
+
+Choose your local save directory:
+
+lcd /Users/you/Downloads
+
+Download a file:
+
+get results_model.cif
+
+    Download directories with:
+
+get -r mydir
+
+Exit:
+
+    exit
+
+Tips
+
+    GUI options: You can also use FileZilla, Cyberduck, or WinSCP with the same host/credentials.
+
+    Always confirm the correct directory before running put or get to avoid overwriting.
 
 🎉 **Happy Folding!** 🎉  

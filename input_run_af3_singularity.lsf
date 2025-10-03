@@ -1,0 +1,28 @@
+#!/bin/bash
+#BSUB -L /bin/bash
+#BSUB -J AF3_2
+#BSUB -o %J.stdout
+#BSUB -eo %J.stderr
+#BSUB -P acc_schlea02a
+#BSUB -q gpuexpress                    # ques: premium (144 hrs) | express (12h ) | gpu (144 hrs) | long (336 hrs)
+#BSUB -W 12:00                  # Wall clock limit for job (hour)
+#BSUB -n 10                       #Number of CPU cores requested
+#BSUB -R rusage[mem=6GB]          #memory pre CPU core requested
+#BSUB -R a100
+#BSUB -gpu num=1                  #Number of GPU cores requested
+#BSUB -R span[hosts=1]
+
+
+ml singularity/3.6.4
+ml cuda/12.4.0
+singularity exec --nv \
+        --bind /sc/arion/scratch/wangy69/AF3_Materials/standard_workflow/input:/root/af3_input \
+        --bind /sc/arion/scratch/wangy69/AF3_Materials/standard_workflow/out:/root/af3_output \
+        --bind /sc/arion/scratch/wangy69/AF3_Materials/standard_workflow:/root/models \
+        --bind /sc/arion/packages/alphafold/alphafold_data/3.0.0:/root/public_databases \
+        alphafold3.sif \
+        python run_alphafold.py \
+        --json_path=/root/af3_input/EXAMPLE_SLC6A14.json \
+        --model_dir=/root/models \
+        --db_dir=/root/public_databases \
+        --output_dir=/root/af3_output

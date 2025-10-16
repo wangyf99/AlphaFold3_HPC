@@ -130,6 +130,7 @@ You can transfer files between your local machine and Minerva using **SFTP** (SS
 
 3. Connect to Minerva via SFTP:
 
+    ```bash
     sftp username@minerva.hpc.mssm.edu
 
 Replace username with your Minerva account.
@@ -138,44 +139,54 @@ Enter your password (MSSM credentials + VIP Access code if required).
 
 4. Navigate to your target folder on Minerva:
 
+    ```bash
     cd /sc/arion/scratch/your_folder/
 
 5. Upload a file:
 
+    ```bash
     put myfile.json
 
 6. Upload directories with:
 
+    ```bash
     put -r mydir
 
 7. Exit:
 
+    ```bash
     exit
 
 ## Downloading (Minerva → Local)
 
 1. Connect via SFTP:
 
+    ```bash
     sftp username@minerva.hpc.mssm.edu
 
 2. Navigate to the remote folder:
 
+    ```bash
     cd /sc/arion/scratch/your_folder/
 
 3. Choose your local save directory:
 
+    ```bash
     lcd /Users/you/Downloads
 
 4. Download a file:
 
+    ```bash
     get results_model.cif
 
 5. Download directories with:
 
+    ```bash
     get -r mydir
 
 6. Exit:
 
+    ```bash
     exit
 
 Tips

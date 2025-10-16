@@ -67,7 +67,8 @@ This ensures you have the necessary container, templates, and scripts in your pe
   - `numSeeds` = number of random seeds (default: 5 models × 1 seed). 
 - Provide inputs:  
   - **Protein sequence** (amino acid FASTA format).  
-  - **Ligand SMILES string**.  
+  - **Ligand SMILES string**.
+  - The detailed explanation of input formats is documented on AlphaFold3's github repository: https://github.com/google-deepmind/alphafold3/blob/main/docs/input.md
 - Copy/paste sequence and ligand SMILES into their respective fields.
 - If you want to see one running successfully in the singularity case, simply upload the EXAMPLE_SLC6A14.json from the repository to the standard_workflow directory.
 

@@ -142,11 +142,11 @@ cd /sc/arion/scratch/your_folder/
 
 Upload a file:
 
-put myfile.json
+    put myfile.json
 
-    Upload directories with:
+Upload directories with:
 
-put -r mydir
+    put -r mydir
 
 Exit:
 

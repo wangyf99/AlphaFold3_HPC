@@ -13,7 +13,7 @@ The `AF3_Materials` directory contains the essential files and templates for run
   - Minerva only supports **Singularity images** (not Docker).  
   - Converted from a Docker image (as of June 11, 2025).  
   - ⚠️ Due to its size (~14 GB), the container is **not stored in this repository**, but it is available in the `AF3_Materials` directory on Minerva.  
-  - To use: copy to your working directory and **gunzip** if needed.  
+  - To use: copy to your working directory and **gunzip**.  
 
 - **fold_input.json** *(example: `EXAMPLE_SLC6A14.json`)*  
   - Template JSON file containing basic input information for running AlphaFold3.  
@@ -55,26 +55,31 @@ cp -r /sc/arion/projects/schlea02a/AF3_Materials /sc/arion/scratch/$USER/
 ```
 This ensures you have the necessary container, templates, and scripts in your personal space.
 
-### 2. Upload AlphaFold3 Parameters
-- Create a directory for AlphaFold3 parameters.  
-- **Recommended location:** `standard_workflow/batch_workflow` inside your working directory.
+### 2. gunzip the Singularity Container (`alphafold3.sif`)
 
-### 3. Modify `fold_input.json`
+### 3. Upload AlphaFold3 Parameters
+- Use sftp to upload AlphaFold3 parameters and you can refer to the instructions at the bottom of this readme file to understand AlphaFold3 parameters.
+- **Recommended location:** `standard_workflow' and 'batch_workflow` inside your working directory.
+
+### 4. Create a folder called "input" and move `fold_input.json` into "input" and Modify `fold_input.json`
 - Define a **name** for your prediction.  
 - Set the number of seeds:  
-  - `numSeeds` = number of random seeds (default: 5 models × 1 seed).  
+  - `numSeeds` = number of random seeds (default: 5 models × 1 seed). 
 - Provide inputs:  
   - **Protein sequence** (amino acid FASTA format).  
   - **Ligand SMILES string**.  
 - Copy/paste sequence and ligand SMILES into their respective fields.
 - If you want to see one running successfully in the singularity case, simply upload the EXAMPLE_SLC6A14.json from the repository to the standard_workflow directory.
 
-### 4. Modify `input_run_af3_singularity.lsf`
-- Replace all instances of `COMPLEX` with your prediction name.  
-- Create an **output directory** for results. In the sample in this directory, a directory called "out"" was created, which you can see in the file Files in Singularity Folder.png.
+### 5. Create a directory called "out" to store output
+- Create an **output directory** for results. In the sample in this directory, a directory called "out" was created, which you can see in the file Files in Singularity Folder.png.
+
+
+### 6. Modify `input_run_af3_singularity.lsf`
+- Replace the content with the `input_run_af3_singularity.lsf` file in this github repository directly and change the account name from wangy69 to your account name and change the input json file name to the input json file name you have set.
 - Update paths for:  
   - Input JSON file.  
-  - Output directory.  
+  - Output directory. (you can leave it the same as the directory in the lsf file in this directory since you have already created a directory called "out" earlier.
   - AlphaFold3 parameters.  
 - Adjust resource requests for larger/multimeric complexes.
 - If you want to see one running successfully in the singularity case, simply upload the input_run_af3_singularity.lsf from the repository to the standard_workflow directory.
@@ -85,7 +90,9 @@ Run:
 ```bash
 bsub < input_run_af3_singularity.lsf
 ```
-
+### 6. Use sftp to get the output from Minerva to local and view the output
+- You can view the output on https://pae-viewer.uni-goettingen.de/
+  
 ---
 
 ## Runtime and Outputs

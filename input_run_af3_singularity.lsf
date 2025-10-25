@@ -7,7 +7,7 @@
 #BSUB -q gpuexpress                    # ques: premium (144 hrs) | express (12h ) | gpu (144 hrs) | long (336 hrs)
 #BSUB -W 12:00                  # Wall clock limit for job (hour)
 #BSUB -n 10                       #Number of CPU cores requested
-#BSUB -R rusage[mem=6GB]          #memory pre CPU core requested
+#BSUB -R rusage[mem=6GB]          #memory per CPU core requested
 #BSUB -R a100
 #BSUB -gpu num=1                  #Number of GPU cores requested
 #BSUB -R span[hosts=1]

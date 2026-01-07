@@ -63,6 +63,7 @@ This ensures you have the necessary container, templates, and scripts in your pe
 ### 2. gunzip the Singularity Container (`alphafold3.sif`)
 
 ### 3. Upload AlphaFold3 Parameters
+- Request Parameters from AlphaFold3 official website and upload it to your directory using sftp
 - Use sftp to upload AlphaFold3 parameters and you can refer to the instructions at the bottom of this readme file to understand AlphaFold3 parameters.
 - **Recommended location:** `standard_workflow' and 'batch_workflow` inside your working directory.
 

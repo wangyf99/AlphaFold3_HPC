@@ -45,6 +45,11 @@ The `AF3_Materials` directory contains the essential files and templates for run
   - `src/` (supporting code for AlphaFold3 execution).  
 
 ---
+## Log in Minerva
+
+ssh yourUserID@minerva.hpc.mssm.edu
+
+When prompted for your password, enter you Mount Sinai password followed immediately by the 6 digit VIP credential.
 
 ## Workflow Steps
 

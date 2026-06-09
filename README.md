@@ -49,7 +49,7 @@ The `AF3_Materials` directory contains the essential files and templates for run
 
 ssh yourUserID@minerva.hpc.mssm.edu
 
-When prompted for your password, enter you Mount Sinai password followed immediately by the 6 digit VIP credential.
+When prompted for your password, enter you Mount Sinai password followed immediately by authenticating it on the push notificaiton from the authenticator on your phone. Registration method: https://labs.icahn.mssm.edu/minervalab/documentation/logging-in/
 
 ## Workflow Steps
 
